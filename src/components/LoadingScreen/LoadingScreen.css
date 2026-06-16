@@ -1,0 +1,110 @@
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a0f;
+  opacity: 1;
+  pointer-events: auto;
+  will-change: opacity;
+}
+
+.loading-screen__scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.025) 2px,
+    rgba(255, 255, 255, 0.025) 4px
+  );
+  animation: loading-scan-drift 10s linear infinite;
+}
+
+.loading-screen__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+}
+
+.loading-screen__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  padding: 2rem;
+}
+
+.loading-screen__logo-wrap {
+  position: relative;
+  will-change: transform, opacity;
+}
+
+.loading-screen__logo {
+  display: block;
+  width: clamp(160px, 28vw, 280px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 24px rgba(153, 69, 255, 0.35));
+}
+
+.loading-screen__logo-wrap.loading-glitch-active .loading-screen__logo {
+  filter: drop-shadow(2px 0 rgba(255, 0, 255, 0.7))
+    drop-shadow(-2px 0 rgba(0, 255, 255, 0.7))
+    drop-shadow(0 0 24px rgba(153, 69, 255, 0.45));
+}
+
+.loading-screen__progress-track {
+  width: min(320px, 72vw);
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.loading-screen__progress-fill {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #9945ff 0%, #00ffff 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.loading-screen__text {
+  display: flex;
+  gap: 0.05em;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+}
+
+.loading-screen__char {
+  display: inline-block;
+  will-change: opacity;
+}
+
+@keyframes loading-scan-drift {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen__scanlines { animation: none; }
+}

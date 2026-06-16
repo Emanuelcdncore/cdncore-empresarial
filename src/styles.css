@@ -1,0 +1,238 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* CDNCore — Corporate Professional + Luxury Minimal */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-ink: var(--ink);
+  --color-ivory: var(--ivory);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-hairline: var(--hairline);
+
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Palette */
+  --ink: oklch(0.18 0.03 255);                /* deep midnight navy */
+  --ivory: oklch(0.975 0.008 85);             /* warm ivory */
+  --gold: oklch(0.72 0.11 78);                /* muted gold */
+  --gold-soft: oklch(0.86 0.06 82);
+  --hairline: oklch(0.86 0.01 255);
+
+  --background: var(--ivory);
+  --foreground: var(--ink);
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+
+  --primary: var(--ink);
+  --primary-foreground: var(--ivory);
+
+  --secondary: oklch(0.94 0.005 85);
+  --secondary-foreground: var(--ink);
+
+  --muted: oklch(0.95 0.004 85);
+  --muted-foreground: oklch(0.45 0.015 255);
+
+  --accent: var(--gold);
+  --accent-foreground: var(--ink);
+
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: var(--ivory);
+
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--gold);
+}
+
+.dark {
+  --background: oklch(0.14 0.04 290);        /* deep purple-black */
+  --foreground: oklch(0.97 0.005 85);         /* near white */
+  --card: oklch(0.19 0.05 290);
+  --card-foreground: oklch(0.97 0.005 85);
+  --popover: oklch(0.19 0.05 290);
+  --popover-foreground: oklch(0.97 0.005 85);
+  --primary: oklch(0.97 0.005 85);
+  --primary-foreground: oklch(0.14 0.04 290);
+  --secondary: oklch(0.21 0.055 290);
+  --secondary-foreground: oklch(0.97 0.005 85);
+  --muted: oklch(0.21 0.055 290);
+  --muted-foreground: oklch(0.72 0.02 270);
+  --accent: var(--gold);
+  --accent-foreground: oklch(0.14 0.04 290);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: var(--gold);
+  --hairline: oklch(1 0 0 / 10%);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  ::selection { background: var(--gold-soft); color: var(--ink); }
+}
+
+@utility container-prose {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .container-prose { padding-inline: 3rem; }
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility rule-gold {
+  position: relative;
+}
+.rule-gold::before {
+  content: "";
+  display: block;
+  width: 2.25rem;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+@utility hairline-t { border-top: 1px solid var(--hairline); }
+@utility hairline-b { border-bottom: 1px solid var(--hairline); }
+@utility bg-hairline { background-color: var(--hairline); }
+
+/* Legal pages */
+.legal-prose h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+}
+.legal-prose p, .legal-prose li {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+}
+.legal-prose ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  space-y: 0.25rem;
+}
+.legal-prose strong { color: var(--foreground); }
+.legal-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+.legal-prose th {
+  text-align: left;
+  padding: 10px 14px;
+  font-weight: 600;
+  color: var(--foreground);
+  background: rgba(139,92,246,0.1);
+  border: 1px solid rgba(139,92,246,0.2);
+}
+.legal-prose td {
+  padding: 9px 14px;
+  color: var(--muted-foreground);
+  border: 1px solid var(--hairline);
+}
+.legal-prose tr:nth-child(even) td { background: var(--secondary); }
+.contact-box {
+  background: rgba(139,92,246,0.08);
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 10px;
+  padding: 20px 24px;
+}
+.contact-box p { margin: 0 0 8px; font-size: 0.9375rem; line-height: 1.7; color: var(--muted-foreground); }
+.contact-box p:last-child { margin: 0; }
+.contact-box strong { color: var(--foreground); }
+
+/* Footer logo: invert in light mode so white logo is visible on light background */
+.footer-logo-img { filter: invert(1); }
+.dark .footer-logo-img { filter: none; }
+
+/* ── Dark mode: golden button effect ── */
+.dark a[class*="border-b"][class*="border-foreground"],
+.dark a[class*="border-b"][class*="pb-"] {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+}
+.dark a[class*="border-b"][class*="border-foreground"]:hover,
+.dark a[class*="border-b"][class*="pb-"]:hover {
+  color: var(--gold-soft) !important;
+  border-color: var(--gold-soft) !important;
+}
+
+/* Eyebrow labels: purple accent in dark */
+.dark .eyebrow {
+  color: oklch(0.72 0.12 290);
+}
+
+/* Rule gold stays gold */
+.dark .rule-gold::before {
+  background: var(--gold);
+}
+
+/* Hiscox card: lighter fill + darker text in light mode */
+html:not(.dark) .hiscox-card .glass-card__fill {
+  background: linear-gradient(145deg, rgba(245,243,255,0.92) 0%, rgba(237,233,254,0.85) 50%, rgba(245,243,255,0.9) 100%);
+}
+html:not(.dark) .hiscox-desc {
+  color: var(--ink);
+}

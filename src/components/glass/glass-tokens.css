@@ -1,0 +1,26 @@
+/* Shared glass design tokens */
+:root {
+  --glass-bg-surface: rgba(12, 12, 18, 0.55);
+  --glass-bg-frosted: rgba(10, 10, 15, 0.45);
+  --glass-bg-inset: rgba(8, 8, 12, 0.72);
+  --glass-bg-nav: rgba(10, 10, 15, 0.72);
+  --glass-bg-opaque: rgba(10, 10, 15, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-bright: rgba(255, 255, 255, 0.16);
+  --glass-highlight-purple: rgba(153, 69, 255, 0.14);
+  --glass-highlight-cyan: rgba(0, 255, 255, 0.1);
+  --glass-blur: 18px;
+  --glass-blur-nav: 20px;
+  --glass-saturate: 1.35;
+  --glass-x: 50%;
+  --glass-y: 50%;
+}
+
+/* Dark mode: purple-tinted glass */
+.dark {
+  --glass-bg-surface: rgba(30, 18, 52, 0.60);
+  --glass-bg-frosted: rgba(22, 12, 42, 0.50);
+  --glass-bg-inset: rgba(16, 8, 32, 0.78);
+  --glass-bg-nav: rgba(18, 10, 36, 0.82);
+  --glass-bg-opaque: rgba(18, 10, 36, 0.96);
+}
